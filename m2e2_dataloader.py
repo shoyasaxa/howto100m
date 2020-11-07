@@ -13,6 +13,7 @@ import re
 import random
 import json
 
+from stop_words import ENGLISH_STOP_WORDS
 
 class M2E2DataLoader(Dataset):
 	"""M2E2 dataset loader."""
@@ -49,7 +50,7 @@ class M2E2DataLoader(Dataset):
 		return w
 
 	def _words_to_we(self, words):
-		words = [word for word in words if word in self.we.vocab]
+		words = [word for word in words if word in self.we.vocab and word not in ENGLISH_STOP_WORDS]
 		if words:
 			we = self._zero_pad_tensor(self.we[words], self.max_words)
 			return th.from_numpy(we)
