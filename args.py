@@ -146,5 +146,23 @@ def get_args(description='Youtube-Text-Video'):
         type=str,
         default='data/LSMDC_train.pth',
         help='')
+    parser.add_argument(
+    	'--m2e2', type=int, default=0,
+    	)
+   	parser.add_argument('--eval_m2e2', type=int, default=0,
+                                help='Evaluate on YouCook2 data')
+    parser.add_argument(
+    	'--m2e2_train_csv_path',
+    	type=str
+    	)
+    parser.add_argument(
+    	'--m2e2_test_csv_path',
+    	type=str
+    	)
+    parser.add_argument(
+    	'--m2e2_sentences_path',
+    	type=str
+    	)
+
     args = parser.parse_args()
     return args
