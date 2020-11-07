@@ -150,7 +150,7 @@ def get_args(description='Youtube-Text-Video'):
     	'--m2e2', type=int, default=0,
     	)
    	parser.add_argument('--eval_m2e2', type=int, default=0,
-                                help='Evaluate on YouCook2 data')
+                                help='Evaluate on M2E2 data')
     parser.add_argument(
     	'--m2e2_train_csv_path',
     	type=str

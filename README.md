@@ -1,3 +1,10 @@
+# Changes in this Fork 
+This fork provides ways to finetune the HowTo100M embedding on the M2E2 data.
+- process_utils contains the functions I used to format the extracted video features into CSV files that are compatible with the provided training script.
+- m2e2_dataloader.py is the data loader for the M2E2 dataset
+- m2e2_train.py is the script used to finetune the pre-trained embedding and evaluate it on the test set. 
+
+
 # HowTo100M code
 
 This repo provides code from the HowTo100M paper.

@@ -70,7 +70,6 @@ class M2E2DataLoader(Dataset):
 		feat_3d = th.from_numpy(feat_3d).float()
 		feat_3d = F.normalize(th.max(feat_3d, dim=0)[0], dim=0)
 
-		# print(feat_2d.shape,feat_3d.shape,th.cat((feat_2d, feat_3d)).shape)
 		return th.cat((feat_2d, feat_3d))
 
 
