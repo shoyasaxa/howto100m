@@ -1,4 +1,4 @@
-# This script is used to finetune AND evaluate on the M2E2 dataset
+# This script finetunes with ASR and evaluates on the M2E2 Co-occurence data
 
 from __future__ import absolute_import
 from __future__ import division
@@ -17,7 +17,7 @@ from metrics import compute_metrics, print_computed_metrics
 from loss import MaxMarginRankingLoss
 from gensim.models.keyedvectors import KeyedVectors
 import pickle
-from m2e2_dataloader import M2E2DataLoader
+from m2e2_dataloader import M2E2DataLoader,M2E2ASRDataLoader
 
 args = get_args()
 if args.verbose:
@@ -38,9 +38,9 @@ print('done')
 
 
 if args.m2e2:
-	dataset = M2E2DataLoader(
-		csv=args.m2e2_train_csv_path,
-		sentences=args.m2e2_sentences_path,
+	dataset = M2E2ASRDataLoader(
+		csv=args.m2e2_train_csv_path, # /kiwi-data/users/shoya/AIDA/m2e2_video_captions_asr.csv
+		videoID2feature_path=args.videoID2feature_path, # /kiwi-data/users/shoya/AIDA/videoID2feature_paths.json
 		we=we,
 		max_words=args.max_words,
 		we_dim=args.we_dim,
@@ -58,8 +58,8 @@ dataloader = DataLoader(
 
 if args.eval_m2e2:
 	dataset_val_m2e2 = M2E2DataLoader(
-		csv=args.m2e2_test_csv_path,
-		sentences=args.m2e2_sentences_path,
+		csv=args.m2e2_test_csv_path, # /home/shoya/howto100m/data_paths_all.csv
+		sentences=args.m2e2_sentences_path, # /kiwi-data/users/shoya/AIDA/event_occurences_video_and_text_pairs.json
 		we=we,
 		max_words=args.max_words,
 		we_dim=args.we_dim,
